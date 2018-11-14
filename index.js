@@ -1,7 +1,7 @@
 const server = require('./server/server');
 
 const AwesomeReporter = function(config, logger) {
-  const log = logger.create('awesome.reporter');
+  const log = logger.create('karma.awesome.reporter');
   const reporterConfig = config.awesomeReporter || {};
   // Default settings
   reporterConfig.serverPort = reporterConfig.serverPort || 3000;
