@@ -2,9 +2,7 @@ module.exports = function(config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine'],
-    files: [
-      'sample_test/**/*.spec.js'
-    ],
+    files: ['sample_test/**/*.spec.js'],
     plugins: [
       require('../index'),
       require('karma-jasmine'),
@@ -14,11 +12,8 @@ module.exports = function(config) {
     awesomeReporter: {
       serverPort: 3000
     },
-    exclude: [
-      '**/*.swp'
-    ],
-    preprocessors: {
-    },
+    exclude: ['**/*.swp'],
+    preprocessors: {},
     reporters: ['progress', 'awesome'],
     port: 9876,
     colors: true,
@@ -28,5 +23,5 @@ module.exports = function(config) {
     browsers: ['ChromeHeadless'],
     singleRun: false,
     concurrency: Infinity
-  })
-}
+  });
+};
