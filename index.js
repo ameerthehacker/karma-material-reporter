@@ -1,7 +1,6 @@
-const server = require('./server/server');
-
 const AwesomeReporter = function(config, logger) {
   const log = logger.create('karma.awesome.reporter');
+  const { server, onSpecCompleteFn } = require('./server/server')(log);
   const reporterConfig = config.awesomeReporter || {};
   // Default settings
   reporterConfig.serverPort = reporterConfig.serverPort || 3000;
@@ -12,6 +11,8 @@ const AwesomeReporter = function(config, logger) {
   }).on('error', (err) => {
     log.error(`Unable to start awesome reporter server: ${err}`);
   })
+
+  this.onSpecComplete = onSpecCompleteFn;
 };
 
 AwesomeReporter.$inject = ['config', 'logger'];
