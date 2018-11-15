@@ -36,7 +36,13 @@ module.exports = (karmaLog) => {
 
   const onRunCompleteFn = (browser, log, type) => {};
 
-  const onExitFn = () => {};
+  const onExitFn = (instance) => {
+    return () => {
+      instance.close(() => {
+        karmaLog.info('Awesome reporter server closed');
+      });
+    };
+  };
 
   return {
     server,

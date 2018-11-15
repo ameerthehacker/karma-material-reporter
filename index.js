@@ -18,7 +18,7 @@ const AwesomeReporter = function(config, logger) {
   reporterConfig.serverPort = reporterConfig.serverPort || 3000;
 
   log.info('Starting awesome reporter server');
-  server
+  const instance = server
     .listen(reporterConfig.serverPort, () => {
       log.info('Awesome reporter server started');
     })
@@ -34,7 +34,7 @@ const AwesomeReporter = function(config, logger) {
   this.onBrowserLog = onBrowserLogFn;
   this.onBrowserRegister = onBrowserRegisterFn;
   this.onBrowserStart = onBrowserStartFn;
-  this.onExit = onExitFn;
+  this.onExit = onExitFn(instance);
   this.onRunComplete = onRunCompleteFn;
   this.onRunStart = onRunStartFn;
 };
