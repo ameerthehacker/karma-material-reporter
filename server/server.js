@@ -1,4 +1,4 @@
-module.exports = (log) => {
+module.exports = (karmaLog) => {
   const express = require('express');
   const server = express();
   const path = require('path');
@@ -20,8 +20,35 @@ module.exports = (log) => {
 
   const onSpecCompleteFn = (browser, result) => {};
 
+  const onBrowserRegisterFn = (browser) => {};
+
+  const onRunStartFn = (browsersCollection) => {};
+
+  const onBrowserChangeFn = (browserCollection) => {};
+
+  const onBrowserStartFn = (browser, info) => {};
+
+  const onBrowserCompleteFn = (browser) => {};
+
+  const onBrowserErrorFn = (browser, error) => {};
+
+  const onBrowserLogFn = (browser, log, type) => {};
+
+  const onRunCompleteFn = (browser, log, type) => {};
+
+  const onExitFn = () => {};
+
   return {
     server,
-    onSpecCompleteFn
+    onSpecCompleteFn,
+    onBrowserChangeFn,
+    onBrowserStartFn,
+    onBrowserCompleteFn,
+    onBrowserErrorFn,
+    onBrowserLogFn,
+    onRunCompleteFn,
+    onExitFn,
+    onBrowserRegisterFn,
+    onRunStartFn
   };
 };
