@@ -1,24 +1,34 @@
 module.exports = (karmaLog) => {
   const express = require('express');
-  const server = express();
+  const app = express();
   const path = require('path');
   const angularConfig = require('../angular.json');
+  const http = require('http');
 
   const outDir =
     angularConfig.projects['karma-awesome-reporter-ui'].architect.build.options
       .outputPath;
+  let env = {};
+  const server = http.createServer(app);
+  const io = require('socket.io')(server);
+
+  io.on('connection', (socket) => {
+    socket.emit('init', env);
+  });
 
   const distDir = path.join(process.cwd(), outDir);
 
   // Set the dist directory as statically servable
-  server.use(express.static(distDir));
+  app.use(express.static(distDir));
 
   // Return index.html to bootstrap angular
-  server.get('/', (req, res) => {
+  app.get('/', (req, res) => {
     res.sendFile(distDir + '/index.html');
   });
 
-  const onSpecCompleteFn = (browser, result) => {};
+  const onSpecCompleteFn = (browser, result) => {
+    env[browser.id] = { browser, result };
+  };
 
   const onBrowserRegisterFn = (browser) => {};
 
@@ -40,6 +50,8 @@ module.exports = (karmaLog) => {
     return () => {
       instance.close(() => {
         karmaLog.info('Awesome reporter server closed');
+        // Exit the process otherwise karma will have trouble exiting
+        process.exit();
       });
     };
   };
