@@ -18,13 +18,8 @@
             "main": "ui/src/main.ts",
             "polyfills": "ui/src/polyfills.ts",
             "tsConfig": "ui/src/tsconfig.app.json",
-            "assets": [
-              "ui/src/favicon.ico",
-              "ui/src/assets"
-            ],
-            "styles": [
-              "ui/src/styles.css"
-            ],
+            "assets": ["ui/src/favicon.ico", "ui/src/assets"],
+            "styles": ["ui/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -71,14 +66,9 @@
             "polyfills": "ui/src/polyfills.ts",
             "tsConfig": "ui/src/tsconfig.spec.json",
             "karmaConfig": "ui/src/karma.conf.js",
-            "styles": [
-              "ui/src/styles.css"
-            ],
+            "styles": ["ui/src/styles.scss"],
             "scripts": [],
-            "assets": [
-              "ui/src/favicon.ico",
-              "ui/src/assets"
-            ]
+            "assets": ["ui/src/favicon.ico", "ui/src/assets"]
           }
         },
         "lint": {
@@ -88,9 +78,7 @@
               "ui/src/tsconfig.app.json",
               "ui/src/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -110,9 +98,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
