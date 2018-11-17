@@ -10,7 +10,12 @@
     </mat-expansion-panel-header>
     <app-suite-info *ngIf="hasMoreSuites(suiteInfo[suite])" [suiteInfo]="suiteInfo[suite]"></app-suite-info>
     <mat-list>
-        <mat-list-item *ngFor="let test of suiteInfo[suite]._">{{ test.description }}</mat-list-item>
+        <mat-list-item *ngFor="let test of suiteInfo[suite]._">
+          <mat-icon *ngIf="test.success && !test.skipped" class="green-color">done</mat-icon>
+          <mat-icon *ngIf="!test.success" class="red-color">clear</mat-icon>
+          <mat-icon *ngIf="test.skipped" class="red-color">blocked</mat-icon>
+          &nbsp; {{ test.description }}
+        </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
 </mat-accordion>

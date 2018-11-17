@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatTabsModule, MatExpansionModule, MatListModule } from '@angular/material';
+import { MatTabsModule, MatExpansionModule, MatListModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
@@ -18,7 +18,8 @@ import { SuiteInfoComponent } from './components/suite-info/suite-info.component
     MatTabsModule,
     FlexLayoutModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+$material-icons-font-path: '~material-icons/iconfont/';
+@import '~material-icons/iconfont/material-icons.scss';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body {
@@ -18,4 +20,12 @@ body {
 
 .mat-list-item + .mat-list-item {
   border-top: 1px solid #ecf0f1;
+}
+
+.green-color {
+  color: green;
+}
+
+.red-color {
+  color: red;
 }
