@@ -6,7 +6,8 @@ module.exports = function(config) {
     plugins: [
       require('../index'),
       require('karma-jasmine'),
-      require('karma-chrome-launcher')
+      require('karma-chrome-launcher'),
+      require('karma-firefox-launcher')
     ],
     // configurations available for awesome reporter
     awesomeReporter: {
@@ -20,7 +21,7 @@ module.exports = function(config) {
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless'],
+    browsers: ['ChromeHeadless', 'Firefox'],
     singleRun: false,
     concurrency: Infinity
   });

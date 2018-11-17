@@ -1,5 +1,14 @@
 <div class="center-align">
   <img width="150" alt="Karma Logo" src="/src/assets/images/karma-logo.svg">
 </div>
-
+<div class="wrapper">
+  <mat-tab-group color='primary'>
+    <mat-tab *ngFor="let browser of browsers">
+      <ng-template mat-tab-label>
+        <img class="browser-logo" [src]="browser.image" alt="{{ browser.name }} logo">
+        {{ browser.name }}
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>
 
