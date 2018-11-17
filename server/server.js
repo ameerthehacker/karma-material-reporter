@@ -35,6 +35,8 @@ module.exports = (karmaLog) => {
 
     const index = suite._.indexOf(specResult.description);
     suite._[index] = specResult;
+
+    io.emit('specResult', env);
   };
 
   const onBrowserRegisterFn = (browser) => {

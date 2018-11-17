@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   private initSubscription: Subscription;
+  private specResultSubscription: Subscription;
   private env: any;
   private baseImagePath = '/src/assets/images';
   private chromeLogo: string = `${this.baseImagePath}/chrome-logo.png`;
@@ -26,11 +27,19 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.socketService.init();
     this.initSubscription = this.socketService.onMessage('init').subscribe(env => {
-      this.env = env;
-      this.suites = Object.keys(env);
-      this.browsers = this.getBrowsers(env);
-      this.browsers = this.processBrowsers(this.browsers);
+      this.updateUI(env);
     });
+
+    this.specResultSubscription = this.socketService.onMessage('specResult').subscribe(env => {
+      this.updateUI(env);
+    });
+  }
+
+  private updateUI(env) {
+    this.env = env;
+    this.suites = Object.keys(env);
+    this.browsers = this.getBrowsers(env);
+    this.browsers = this.processBrowsers(this.browsers);
   }
 
   private getBrowsers(env) {
@@ -61,5 +70,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // Required to avoid memory leaks
     this.initSubscription.unsubscribe();
+    this.specResultSubscription.unsubscribe();
   }
 }
