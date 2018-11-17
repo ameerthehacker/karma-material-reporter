@@ -28,6 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.env = env;
       this.browsers = this.getBrowsers(env);
       this.browsers = this.processBrowsers(this.browsers);
+      console.log(this.env);
     });
   }
 
