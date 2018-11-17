@@ -11,3 +11,11 @@ body {
 .mat-tab-label:not(.mat-tab-diabled) {
   opacity: 1 !important;
 }
+
+.mat-expansion-panel-body {
+  padding: 10px 10px !important;
+}
+
+.mat-list-item + .mat-list-item {
+  border-top: 1px solid #ecf0f1;
+}

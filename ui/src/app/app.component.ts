@@ -18,6 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
     { name: 'Chrome', image: this.chromeLogo },
     { name: 'Firefox', image: this.fireFoxLogo }
   ]
+  private suites;
   private browsers;
 
   constructor(private socketService: SocketService) {}
@@ -26,9 +27,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.socketService.init();
     this.initSubscription = this.socketService.onMessage('init').subscribe(env => {
       this.env = env;
+      this.suites = Object.keys(env);
       this.browsers = this.getBrowsers(env);
       this.browsers = this.processBrowsers(this.browsers);
-      console.log(this.env);
     });
   }
 

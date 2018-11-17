@@ -1,0 +1,16 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let suite of suites">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ suite }}
+      </mat-panel-title>
+      <mat-panel-description>
+        
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-suite-info *ngIf="hasMoreSuites(suiteInfo[suite])" [suiteInfo]="suiteInfo[suite]"></app-suite-info>
+    <mat-list>
+        <mat-list-item *ngFor="let test of suiteInfo[suite]._">{{ test.description }}</mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+</mat-accordion>

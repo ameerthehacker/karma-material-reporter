@@ -1,20 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule, MatExpansionModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
+import { SuiteInfoComponent } from './components/suite-info/suite-info.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SuiteInfoComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatTabsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatExpansionModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

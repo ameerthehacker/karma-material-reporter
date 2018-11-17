@@ -26,17 +26,28 @@ module.exports = (karmaLog) => {
     res.sendFile(distDir + '/index.html');
   });
 
-  const onSpecCompleteFn = (browser, result) => {
-    env[browser.id] = { browser, result };
+  const onSpecCompleteFn = (browser, specResult) => {
+    let suite = env[browser.id].info.specs[specResult.suite[0]];
+
+    for (let i = 1; i < specResult.suite.length; i++) {
+      suite = suite[specResult.suite[i]];
+    }
+
+    const index = suite._.indexOf(specResult.description);
+    suite._[index] = specResult;
   };
 
-  const onBrowserRegisterFn = (browser) => {};
+  const onBrowserRegisterFn = (browser) => {
+    env[browser.id] = { browser };
+  };
 
   const onRunStartFn = (browsersCollection) => {};
 
   const onBrowserChangeFn = (browserCollection) => {};
 
-  const onBrowserStartFn = (browser, info) => {};
+  const onBrowserStartFn = (browser, info) => {
+    env[browser.id].info = info;
+  };
 
   const onBrowserCompleteFn = (browser) => {};
 
