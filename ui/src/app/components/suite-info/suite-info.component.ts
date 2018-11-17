@@ -15,7 +15,6 @@ export class SuiteInfoComponent implements OnInit {
 
   ngOnInit() {
     this.suites = Object.keys(this.suiteInfo).filter(e => e != '_');
-    console.log(this.suiteInfo);
   }
 
   public hasMoreSuites(suite) {
@@ -27,6 +26,15 @@ export class SuiteInfoComponent implements OnInit {
     }
     else {
       return  false;
+    }
+  }
+
+  public isPending(test) {
+    if(typeof(test) != 'object') {
+      return true;
+    }
+    else {
+      return false;
     }
   }
 }

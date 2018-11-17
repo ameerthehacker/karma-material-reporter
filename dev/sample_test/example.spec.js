@@ -13,7 +13,10 @@ describe('example suite1', () => {
 });
 
 describe('example suite2', () => {
-  it('passing test3', () => {
-    expect(1).toBe(1);
+  it('passing test3', (done) => {
+    setTimeout(() => {
+      expect(1).toBe(1);
+      done();
+    }, 3000);
   });
 });
