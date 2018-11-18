@@ -28,11 +28,19 @@ module.exports = (karmaLog) => {
 
   const onSpecCompleteFn = (browser, specResult) => {
     let suite = env[browser.id].info.specs[specResult.suite[0]];
-    updateSuiteStatus(suite, specResult.success ? 'success' : 'fail');
+    updateSuiteStatus(
+      suite,
+      specResult.success ? 'success' : 'fail',
+      specResult.time
+    );
 
     for (let i = 1; i < specResult.suite.length; i++) {
       suite = suite[specResult.suite[i]];
-      updateSuiteStatus(suite, specResult.success ? 'success' : 'fail');
+      updateSuiteStatus(
+        suite,
+        specResult.success ? 'success' : 'fail',
+        specResult.time
+      );
     }
 
     const index = suite._.indexOf(specResult.description);
@@ -41,12 +49,12 @@ module.exports = (karmaLog) => {
     io.emit('specResult', env);
   };
 
-  const updateSuiteStatus = (suite, status) => {
-    if (suite.$) {
-      suite.$ = suite.$ === 'fail' ? 'fail' : status;
-    } else {
-      suite.$ = status;
+  const updateSuiteStatus = (suite, status, time) => {
+    if (!suite.$) {
+      suite.$ = { time: 0, status: '' };
     }
+    suite.$.status = suite.$.status === 'fail' ? 'fail' : status;
+    suite.$.time += time;
   };
 
   const onBrowserRegisterFn = (browser) => {
