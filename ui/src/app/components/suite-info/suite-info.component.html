@@ -2,6 +2,10 @@
   <mat-expansion-panel *ngFor="let suite of suites">
     <mat-expansion-panel-header>
       <mat-panel-title>
+        <mat-icon *ngIf="suiteInfo[suite].$ === 'success'" class="green-color">done</mat-icon>
+        <mat-icon *ngIf="suiteInfo[suite].$ === 'fail'" class="red-color">clear</mat-icon>
+        <mat-spinner [diameter]="20" *ngIf="!suiteInfo[suite].$"></mat-spinner>
+        &nbsp;
         {{ suite }}
       </mat-panel-title>
       <mat-panel-description>

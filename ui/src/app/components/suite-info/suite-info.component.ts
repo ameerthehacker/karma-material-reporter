@@ -14,12 +14,12 @@ export class SuiteInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.suites = Object.keys(this.suiteInfo).filter(e => e != '_');
+    this.suites = Object.keys(this.suiteInfo).filter(e => e != '_' && e != '$');
   }
 
   public hasMoreSuites(suite) {
     // If _ is present then more than 1 keys is required otherwise just one key is fine
-    const requiresKeysCount = suite._ ? 1: 0;
+    const requiresKeysCount = suite._ ? 1: 0 + suite.$? 1: 0;
 
     if(Object.keys(suite).length > requiresKeysCount) {
       return true;
