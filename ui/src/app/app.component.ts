@@ -38,8 +38,22 @@ export class AppComponent implements OnInit, OnDestroy {
   private updateUI(env) {
     this.env = env;
     this.suites = Object.keys(env);
-    this.browsers = this.getBrowsers(env);
-    this.browsers = this.processBrowsers(this.browsers);
+
+    if(!this.browsers) {
+      this.browsers = this.getBrowsers(env);
+      this.browsers = this.processBrowsers(this.browsers);
+    }
+    else {
+      let browsers = this.getBrowsers(env);
+      browsers = this.processBrowsers(browsers);
+      browsers.forEach(browser => {
+        let isPresent: boolean = this.browsers.find(e => e.id == browser.id);
+
+        if(!isPresent) {
+          this.browsers.push(browser);
+        }
+      })
+    }
   }
 
   private getBrowsers(env) {
