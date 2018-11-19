@@ -1,4 +1,4 @@
-<mat-accordion>
+<mat-accordion multi="true">
   <mat-expansion-panel *ngFor="let suite of suites">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -6,11 +6,8 @@
         <mat-icon *ngIf="suiteInfo[suite].$.status === 'fail'" class="red-color">clear</mat-icon>
         <mat-spinner [diameter]="20" *ngIf="!suiteInfo[suite].$"></mat-spinner>
         &nbsp;
-        {{ suite }}
+        {{ suite }} &nbsp; <span class="contrast-color">{{ suiteInfo[suite].$? (suiteInfo[suite].$.time) / 1000: '' }}s</span>
       </mat-panel-title>
-      <mat-panel-description>
-        {{ suiteInfo[suite].$? (suiteInfo[suite].$.time) / 1000: '' }}s
-      </mat-panel-description>
     </mat-expansion-panel-header>
     <app-suite-info *ngIf="hasMoreSuites(suiteInfo[suite])" [suiteInfo]="suiteInfo[suite]"></app-suite-info>
     <mat-list>

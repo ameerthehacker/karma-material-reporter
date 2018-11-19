@@ -2,11 +2,15 @@
   text-align: center;
 }
 .wrapper {
-  padding: 60px;
+  padding: 10px;
 }
 
 .browser-logo {
+  @extend .logo;
+  padding: 5px;
+}
+
+.logo {
   height: 30px;
   width: auto;
-  padding: 5px;
 }

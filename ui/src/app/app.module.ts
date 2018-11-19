@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatTabsModule, MatExpansionModule, MatListModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatTabsModule, MatExpansionModule, MatListModule, MatIconModule, MatProgressSpinnerModule, MatToolbarModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
@@ -20,7 +20,8 @@ import { SuiteInfoComponent } from './components/suite-info/suite-info.component
     MatExpansionModule,
     MatListModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

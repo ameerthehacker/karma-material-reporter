@@ -1,14 +1,18 @@
-<div class="center-align">
-  <img width="150" alt="Karma Logo" src="/src/assets/images/karma-logo.svg">
-</div>
-<div class="wrapper" fxLayout="column" fxLayoutWrap fxLayoutAlign="space-evenly center">
+<mat-toolbar color="primary">
+  <img class="logo" src="/src/assets/images/karma-logo.svg" alt="karma logo"> &nbsp;
+  Awesome Reporter
+  <span class="fill-space"></span>
+</mat-toolbar>
+<div class="wrapper" fxLayout="column" fxLayoutWrap fxLayoutAlign="space-evenly stretch center">
   <mat-tab-group>
     <mat-tab *ngFor="let browser of browsers">
       <ng-template mat-tab-label>
         <img class="browser-logo" [src]="browser.image" alt="{{ browser.name }} logo">
         {{ browser.name }}
       </ng-template>
-      <app-suite-info [suiteInfo]="env[browser.id].info.specs"></app-suite-info>
+      <div class="suites">
+        <app-suite-info [suiteInfo]="env[browser.id].info.specs"></app-suite-info>
+      </div>
     </mat-tab>
   </mat-tab-group>
 </div>

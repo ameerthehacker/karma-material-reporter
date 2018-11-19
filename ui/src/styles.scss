@@ -6,7 +6,6 @@ $material-icons-font-path: '~material-icons/iconfont/';
 
 body {
   margin: 0px;
-  margin-top: 60px;
   background: ghostwhite;
 }
 
@@ -16,6 +15,11 @@ body {
 
 .mat-expansion-panel-body {
   padding: 10px 10px !important;
+}
+
+.mat-expansion-panel {
+  margin: 0px !important;
+  box-shadow: none !important;
 }
 
 .mat-list-item + .mat-list-item {
@@ -32,4 +36,8 @@ body {
 
 .contrast-color {
   color: rgba(0, 0, 0, 0.54);
+}
+
+.suites {
+  margin-top: 10px;
 }
