@@ -4,6 +4,7 @@ module.exports = (karmaLog) => {
   const path = require('path');
   const angularConfig = require('../angular.json');
   const http = require('http');
+  const favicon = require('serve-favicon');
 
   const outDir =
     angularConfig.projects['karma-awesome-reporter-ui'].architect.build.options
@@ -17,6 +18,11 @@ module.exports = (karmaLog) => {
   });
 
   const distDir = path.join(process.cwd(), outDir);
+
+  // Set karma as favicon
+  app.use(
+    favicon(path.join(distDir, 'src', 'assets', 'images', 'favicon.ico'))
+  );
 
   // Set the dist directory as statically servable
   app.use(express.static(distDir));
