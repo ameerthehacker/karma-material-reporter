@@ -19,9 +19,9 @@ export class AppComponent implements OnInit, OnDestroy {
     { name: 'Chrome', image: this.chromeLogo },
     { name: 'Firefox', image: this.fireFoxLogo }
   ]
-  private suites;
   private browsers;
   private logs = {};
+  private noTests: boolean = false;
 
   constructor(private socketService: SocketService) {}
 
@@ -38,7 +38,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private updateUI(env) {
     this.env = env;
-    this.suites = Object.keys(env);
 
     if(!this.browsers) {
       this.browsers = this.getBrowsers(env);

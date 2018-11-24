@@ -10,7 +10,17 @@
         <img class="browser-logo" [src]="browser.image" alt="{{ browser.name }} logo">
         {{ browser.name }}
       </ng-template>
-      <mat-card *ngIf="logs[browser.id].length > 0">
+      <mat-card *ngIf="env[browser.id].info && env[browser.id].info.total == 0">
+        <mat-card-header>
+          <mat-card-title>
+            No Tests
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          Please add some tests to see the results
+        </mat-card-content>
+      </mat-card>
+      <mat-card *ngIf="env[browser.id].info && env[browser.id].info.total != 0 && logs[browser.id].length > 0">
         <mat-card-header>
           <mat-card-title>
             Logs

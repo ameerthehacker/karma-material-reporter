@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-suite-info',
   templateUrl: './suite-info.component.html',
   styleUrls: ['./suite-info.component.scss']
 })
-export class SuiteInfoComponent implements OnInit {
+export class SuiteInfoComponent implements OnInit, OnChanges {
 
   @Input()
   suiteInfo: Object;
@@ -14,6 +14,10 @@ export class SuiteInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.init();
+  }
+
+  private init() {
     this.suites = Object.keys(this.suiteInfo).filter(e => e != '_' && e != '$');
   }
 
@@ -35,6 +39,16 @@ export class SuiteInfoComponent implements OnInit {
     }
     else {
       return false;
+    }
+  }
+
+  public ngOnChanges(changes: SimpleChanges) {
+    for(let key in changes) {
+      if(key == 'suiteInfo' && changes.hasOwnProperty('suiteInfo')) {
+        if(this.suiteInfo != undefined) {
+          this.init();
+        }
+      }
     }
   }
 }
