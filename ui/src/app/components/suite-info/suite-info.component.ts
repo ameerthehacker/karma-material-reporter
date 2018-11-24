@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 
 @Component({
   selector: 'app-suite-info',
@@ -6,46 +12,45 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
   styleUrls: ['./suite-info.component.scss']
 })
 export class SuiteInfoComponent implements OnInit, OnChanges {
-
   @Input()
   suiteInfo: Object;
   suites: Array<Object>;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.init();
   }
 
   private init() {
-    this.suites = Object.keys(this.suiteInfo).filter(e => e != '_' && e != '$');
+    this.suites = Object.keys(this.suiteInfo).filter(
+      (e) => e !== '_' && e !== '$'
+    );
   }
 
   public hasMoreSuites(suite) {
     // If _ is present then more than 1 keys is required otherwise just one key is fine
-    const requiresKeysCount = suite._ ? 1: 0 + suite.$? 1: 0;
+    const requiresKeysCount = suite._ ? 1 : 0 + suite.$ ? 1 : 0;
 
-    if(Object.keys(suite).length > requiresKeysCount) {
+    if (Object.keys(suite).length > requiresKeysCount) {
       return true;
-    }
-    else {
-      return  false;
+    } else {
+      return false;
     }
   }
 
   public isPending(test) {
-    if(typeof(test) != 'object') {
+    if (typeof test !== 'object') {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
 
   public ngOnChanges(changes: SimpleChanges) {
-    for(let key in changes) {
-      if(key == 'suiteInfo' && changes.hasOwnProperty('suiteInfo')) {
-        if(this.suiteInfo != undefined) {
+    for (const key in changes) {
+      if (key === 'suiteInfo' && changes.hasOwnProperty('suiteInfo')) {
+        if (this.suiteInfo !== undefined) {
           this.init();
         }
       }
