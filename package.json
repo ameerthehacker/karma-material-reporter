@@ -41,6 +41,16 @@
   },
   "homepage": "https://github.com/ameerthehacker/karma-awesome-reporter#readme",
   "dependencies": {
+    "express": "^4.16.4",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "core-js": "^2.5.4",
+    "rxjs": "^6.0.0",
+    "socket.io-client": "^2.1.1",
+    "zone.js": "^0.8.26",
+    "material-icons": "^0.2.3",
     "@angular/animations": "^7.0.4",
     "@angular/cdk": "^7.0.4",
     "@angular/common": "^7.0.4",
@@ -53,16 +63,6 @@
     "@angular/platform-browser": "^7.0.4",
     "@angular/platform-browser-dynamic": "^7.0.4",
     "@angular/router": "^7.0.4",
-    "core-js": "^2.5.4",
-    "express": "^4.16.4",
-    "material-icons": "^0.2.3",
-    "rxjs": "^6.0.0",
-    "serve-favicon": "^2.5.0",
-    "socket.io": "^2.1.1",
-    "socket.io-client": "^2.1.1",
-    "zone.js": "^0.8.26"
-  },
-  "devDependencies": {
     "@angular-devkit/build-angular": "~0.10.6",
     "@angular/cli": "~7.0.6",
     "@angular/compiler-cli": "^7.0.4",
