@@ -90,11 +90,10 @@ module.exports = (karmaLog) => {
 
   const onExitFn = (instance) => {
     return () => {
-      instance.close(() => {
-        karmaLog.info('Awesome reporter server closed');
-        // Exit the process otherwise karma will have trouble exiting
-        process.exit();
-      });
+      instance.close();
+      karmaLog.info('Awesome reporter server closing...');
+      // Exit the process otherwise karma will have trouble exiting
+      process.exit();
     };
   };
 
