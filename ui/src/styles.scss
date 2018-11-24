@@ -22,6 +22,16 @@ body {
   box-shadow: none !important;
 }
 
+.mat-expansion-panel + .mat-expansion-panel {
+  border-top: 1px solid #ecf0f1;
+}
+
+.mat-expansion-panel {
+  .mat-expansion-panel {
+    border: 1px solid #ecf0f1;
+  }
+}
+
 .mat-card {
   box-shadow: none !important;
 }
@@ -43,5 +53,13 @@ body {
 }
 
 .suites {
+  margin-top: 10px;
+}
+
+pre {
+  margin: 0;
+}
+
+.log-wrapper + .log-wrapper {
   margin-top: 10px;
 }
