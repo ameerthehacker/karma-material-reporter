@@ -8,6 +8,9 @@
         &nbsp;
         {{ suite }} &nbsp; <span *ngIf="suiteInfo[suite].$ && suiteInfo[suite].$.time != undefined" class="contrast-color">{{ suiteInfo[suite].$? (suiteInfo[suite].$.time) / 1000: '' }}s</span>
       </mat-panel-title>
+      <mat-panel-description>
+        {{ suiteInfo[suite]._.length }} {{ suiteInfo[suite]._.length != 1? 'tests': 'test' }}
+      </mat-panel-description>
     </mat-expansion-panel-header>
     <app-suite-info *ngIf="hasMoreSuites(suiteInfo[suite])" [suiteInfo]="suiteInfo[suite]"></app-suite-info>
     <mat-list>
