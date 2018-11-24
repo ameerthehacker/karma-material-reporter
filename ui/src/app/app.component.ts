@@ -21,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ]
   private suites;
   private browsers;
+  private logs = {};
 
   constructor(private socketService: SocketService) {}
 
@@ -69,6 +70,18 @@ export class AppComponent implements OnInit, OnDestroy {
   private processBrowsers(browsers) {
     for(let i = 0; i < browsers.length; i++) {
       const browserName = browsers[i].name;
+      const browserId = browsers[i].id;
+
+      this.logs[browserId] = [];
+      for(let key in this.env[browserId].logs) {
+        if(this.env[browserId].logs.hasOwnProperty(key)) {
+          const logs = this.env[browserId].logs[key];
+
+          if(logs.log.length > 0) {
+            this.logs[browserId].push(logs);            
+          }
+        }
+      }
 
       this.browserImages.forEach(browserImage => {
         if(browserName.startsWith(browserImage.name)) {

@@ -10,6 +10,18 @@
         <img class="browser-logo" [src]="browser.image" alt="{{ browser.name }} logo">
         {{ browser.name }}
       </ng-template>
+      <mat-card *ngIf="logs[browser.id].length > 0">
+        <mat-card-header>
+          <mat-card-title>
+            Logs
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="red-color" *ngFor="let log of logs[browser.id]">
+             [{{ log.fullName }}]: {{ log.log }}
+          </div>
+        </mat-card-content>
+      </mat-card>
       <app-suite-info *ngIf="env[browser.id].info" [suiteInfo]="env[browser.id].info.specs"></app-suite-info>
     </mat-tab>
   </mat-tab-group>

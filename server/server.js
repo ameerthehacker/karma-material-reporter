@@ -28,6 +28,11 @@ module.exports = (karmaLog) => {
 
   const onSpecCompleteFn = (browser, specResult) => {
     let suite = env[browser.id].info.specs[specResult.suite[0]];
+    env[browser.id].logs[specResult.id] = {
+      fullName: specResult.fullName,
+      log: specResult.log
+    };
+
     updateSuiteStatus(
       suite,
       specResult.success ? 'success' : 'fail',
@@ -58,7 +63,7 @@ module.exports = (karmaLog) => {
   };
 
   const onBrowserRegisterFn = (browser) => {
-    env[browser.id] = { browser };
+    env[browser.id] = { browser, logs: {} };
   };
 
   const onRunStartFn = (browsersCollection) => {};
