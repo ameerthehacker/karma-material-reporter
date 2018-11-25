@@ -5,22 +5,7 @@ import { SocketClientService } from './socket.client.service';
 
 import { environment } from '../../environments/environment';
 
-class SocketClientServiceMock {
-  public listenMap = {};
-
-  public io(url: string) {
-    const on = (key, fn) => {
-      this.listenMap[key] = fn;
-    };
-    on.bind(this);
-
-    return {
-      send() {},
-      emit() {},
-      on
-    };
-  }
-}
+import { SocketClientServiceMock } from '../../../__mocks__/socket.client.service';
 
 describe('SocketService', () => {
   let service: SocketService;
