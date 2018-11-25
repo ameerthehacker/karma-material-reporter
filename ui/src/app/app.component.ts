@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SocketService } from './services/socket.service';
 import { Subscription } from 'rxjs';
+import { browserImages } from './constants';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,6 @@ export class AppComponent implements OnInit, OnDestroy {
   private initSubscription: Subscription;
   private specResultSubscription: Subscription;
   private env: any;
-  private baseImagePath = '/src/assets/images';
-  private chromeLogo = `${this.baseImagePath}/chrome-logo.png`;
-  private fireFoxLogo = `${this.baseImagePath}/firefox-logo.png`;
-  private browserImages = [
-    { name: 'HeadlessChrome', image: this.chromeLogo },
-    { name: 'Chrome', image: this.chromeLogo },
-    { name: 'Firefox', image: this.fireFoxLogo }
-  ];
   private browsers;
   private logs = {};
   private noTests = false;
@@ -89,7 +82,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       }
 
-      this.browserImages.forEach((browserImage) => {
+      browserImages.forEach((browserImage) => {
         if (browserName.startsWith(browserImage.name)) {
           browsers[i].name = browserImage.name;
           browsers[i].image = browserImage.image;
