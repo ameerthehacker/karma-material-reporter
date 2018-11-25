@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import * as io from 'socket.io-client';
 import { Observable } from 'rxjs';
+
+import { SocketClientService } from './socket.client.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,10 @@ import { Observable } from 'rxjs';
 export class SocketService {
   private socket;
 
-  constructor() {}
+  constructor(private socketClientService: SocketClientService) {}
 
   public init() {
-    this.socket = io(environment.serverUrl);
+    this.socket = this.socketClientService.io(environment.serverUrl);
   }
 
   public send(key: string, value: any) {
@@ -20,8 +21,12 @@ export class SocketService {
   }
 
   public onMessage(key: string): Observable<any> {
-    return new Observable<any>(observer => {
-        this.socket.on(key, (value: any) => observer.next(value));
+    return new Observable<any>((observer) => {
+      this.socket.on(key, (value: any) => observer.next(value));
     });
+  }
+
+  public getSocket() {
+    return this.socket;
   }
 }
