@@ -2,26 +2,54 @@
   <mat-expansion-panel *ngFor="let suite of suites">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <mat-icon *ngIf="suiteInfo[suite]?.$ && suiteInfo[suite].$.status === 'success'" class="green-color">done</mat-icon>
-        <mat-icon *ngIf="suiteInfo[suite]?.$ && suiteInfo[suite].$.status === 'fail'" class="red-color">clear</mat-icon>
+        <mat-icon
+          *ngIf="suiteInfo[suite]?.$ && suiteInfo[suite].$.status === 'success'"
+          class="green-color"
+          >done</mat-icon
+        >
+        <mat-icon
+          *ngIf="suiteInfo[suite]?.$ && suiteInfo[suite].$.status === 'fail'"
+          class="red-color"
+          >clear</mat-icon
+        >
         <mat-spinner [diameter]="20" *ngIf="!suiteInfo[suite]?.$"></mat-spinner>
-        &nbsp;
-        {{ suite }} &nbsp; <span *ngIf="suiteInfo[suite]?.$ && suiteInfo[suite].$.time != undefined" class="contrast-color">{{ suiteInfo[suite].$? (suiteInfo[suite].$.time) / 1000: '' }}s</span>
+        &nbsp; {{ suite }} &nbsp;
+        <span
+          *ngIf="suiteInfo[suite]?.$ && suiteInfo[suite].$.time != undefined"
+          class="contrast-color"
+          >{{ suiteInfo[suite].$ ? suiteInfo[suite].$.time / 1000 : '' }}s</span
+        >
       </mat-panel-title>
       <mat-panel-description>
-        {{ suiteInfo[suite]._.length }} {{ suiteInfo[suite]._.length != 1? 'tests': 'test' }}
+        {{ suiteInfo[suite]._.length }}
+        {{ suiteInfo[suite]._.length != 1 ? 'specs' : 'spec' }}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <app-suite-info *ngIf="hasMoreSuites(suiteInfo[suite])" [suiteInfo]="suiteInfo[suite]"></app-suite-info>
+    <app-suite-info
+      *ngIf="hasMoreSuites(suiteInfo[suite])"
+      [suiteInfo]="suiteInfo[suite]"
+    ></app-suite-info>
     <mat-list>
-        <mat-list-item *ngFor="let test of suiteInfo[suite]._">
-          <mat-spinner [diameter]="20" *ngIf="isPending(test)"></mat-spinner>
-          <mat-icon *ngIf="!isPending(test) && test.success && !test.skipped" class="green-color">done</mat-icon>
-          <mat-icon *ngIf="!isPending(test) && !test.success" class="red-color">clear</mat-icon>
-          <mat-icon *ngIf="!isPending(test) && test.skipped" class="red-color">blocked</mat-icon>
-          &nbsp; {{ isPending(test)? test: test.description }} &nbsp;
-          <span *ngIf="suiteInfo[suite].$ && suiteInfo[suite].$.time != undefined" class="contrast-color">{{ test.time / 1000 }}s</span>
-        </mat-list-item>
+      <mat-list-item *ngFor="let test of suiteInfo[suite]._">
+        <mat-spinner [diameter]="20" *ngIf="isPending(test)"></mat-spinner>
+        <mat-icon
+          *ngIf="!isPending(test) && test.success && !test.skipped"
+          class="green-color"
+          >done</mat-icon
+        >
+        <mat-icon *ngIf="!isPending(test) && !test.success" class="red-color"
+          >clear</mat-icon
+        >
+        <mat-icon *ngIf="!isPending(test) && test.skipped" class="red-color"
+          >blocked</mat-icon
+        >
+        &nbsp; {{ isPending(test) ? test : test.description }} &nbsp;
+        <span
+          *ngIf="suiteInfo[suite].$ && suiteInfo[suite].$.time != undefined"
+          class="contrast-color"
+          >{{ test.time / 1000 }}s</span
+        >
+      </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
 </mat-accordion>
