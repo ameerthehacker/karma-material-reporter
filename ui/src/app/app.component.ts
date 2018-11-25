@@ -9,14 +9,14 @@ import { browserImages } from './constants';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  private initSubscription: Subscription;
-  private specResultSubscription: Subscription;
-  private browserErrorSubscription: Subscription;
-  private summarySubscription: Subscription;
-  private env: any;
-  private browsers;
-  private logs = {};
-  private noTests = false;
+  public initSubscription: Subscription;
+  public specResultSubscription: Subscription;
+  public browserErrorSubscription: Subscription;
+  public summarySubscription: Subscription;
+  public env: any;
+  public browsers;
+  public logs = {};
+  public noTests = false;
 
   constructor(private socketService: SocketService) {}
 
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
       });
   }
 
-  private updateUI(env) {
+  public updateUI(env) {
     this.env = env;
 
     if (!this.browsers) {
@@ -70,7 +70,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getBrowsers(env) {
+  public getBrowsers(env) {
     const browsers = [];
 
     for (const key in env) {
@@ -82,7 +82,7 @@ export class AppComponent implements OnInit, OnDestroy {
     return browsers;
   }
 
-  private processBrowsers(browsers) {
+  public processBrowsers(browsers) {
     for (let i = 0; i < browsers.length; i++) {
       const browserName = browsers[i].name;
       const browserId = browsers[i].id;
