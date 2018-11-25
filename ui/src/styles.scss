@@ -63,3 +63,15 @@ pre {
 .log-wrapper + .log-wrapper {
   margin-top: 10px;
 }
+
+.fill-space {
+  flex: 1 1 auto;
+}
+
+.summary-toolbar {
+  height: 50px !important;
+
+  span {
+    font-size: smaller;
+  }
+}

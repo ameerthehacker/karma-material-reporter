@@ -18,6 +18,30 @@
         />
         {{ browser.name }}
       </ng-template>
+      <mat-toolbar *ngIf="env[browser.id].summary" class="summary-toolbar">
+        <span
+          [ngClass]="{
+            'green-color': env[browser.id].summary.failed === 0,
+            'red-color': env[browser.id].summary.failed !== 0
+          }"
+          ><pre>
+Ran {{ env[browser.id].summary.total || 0 }} {{
+              env[browser.id].summary.total != 1 ? 'specs' : 'spec'
+            }}, {{ env[browser.id].summary.skipped || 0 }} skipped, {{
+              env[browser.id].summary.failed || 0
+            }} failed</pre></span
+        >
+        <span class="fill-space"></span>
+        <span
+          [ngClass]="{
+            'green-color': env[browser.id].summary.failed === 0,
+            'red-color': env[browser.id].summary.failed !== 0
+          }"
+        >
+          <pre>
+finished in {{ env[browser.id].summary.totalTime / 1000 || 0 }}s</pre>
+        </span>
+      </mat-toolbar>
       <mat-card *ngIf="env[browser.id]?.error">
         <mat-card-header>
           <mat-card-title> Browser Error </mat-card-title>
