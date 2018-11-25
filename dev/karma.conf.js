@@ -11,7 +11,8 @@ module.exports = function(config) {
     ],
     // configurations available for awesome reporter
     awesomeReporter: {
-      serverPort: 3000
+      serverPort: 3000,
+      autoOpen: true
     },
     exclude: ['**/*.swp'],
     preprocessors: {},

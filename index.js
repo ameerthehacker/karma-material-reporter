@@ -1,5 +1,6 @@
 const AwesomeReporter = function(config, logger) {
   const log = logger.create('karma.awesome.reporter');
+  const opn = require('opn');
   const {
     server,
     onSpecCompleteFn,
@@ -21,6 +22,10 @@ const AwesomeReporter = function(config, logger) {
   const instance = server
     .listen(reporterConfig.serverPort, () => {
       log.info('Awesome reporter server started');
+
+      if (reporterConfig.autoOpen !== false) {
+        opn('http://localhost:3000');
+      }
     })
     .on('error', (err) => {
       log.error(`Unable to start awesome reporter server: ${err}`);
