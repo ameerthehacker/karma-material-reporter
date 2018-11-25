@@ -1,40 +1,72 @@
 <mat-toolbar color="primary">
-  <img class="logo" src="/src/assets/images/karma-logo.svg" alt="karma logo"> &nbsp;
-  Awesome Reporter
-  <span class="fill-space"></span>
+  <img class="logo" src="/src/assets/images/karma-logo.svg" alt="karma logo" />
+  &nbsp; Awesome Reporter <span class="fill-space"></span>
 </mat-toolbar>
-<div class="wrapper" fxLayout="column" fxLayoutWrap fxLayoutAlign="space-evenly stretch center">
+<div
+  class="wrapper"
+  fxLayout="column"
+  fxLayoutWrap
+  fxLayoutAlign="space-evenly stretch center"
+>
   <mat-tab-group>
     <mat-tab *ngFor="let browser of browsers">
       <ng-template mat-tab-label>
-        <img class="browser-logo" [src]="browser.image" alt="{{ browser.name }} logo">
+        <img
+          class="browser-logo"
+          [src]="browser.image"
+          alt="{{ browser.name }} logo"
+        />
         {{ browser.name }}
       </ng-template>
-      <mat-card *ngIf="env[browser.id].info && env[browser.id].info.total == 0">
+      <mat-card *ngIf="env[browser.id]?.error">
         <mat-card-header>
-          <mat-card-title>
-            No Tests
-          </mat-card-title>
+          <mat-card-title> Browser Error </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="red-color">
+          <pre>
+            {{ env[browser.id].error.message || env[browser.id].error }}</pre
+          >
+        </mat-card-content>
+      </mat-card>
+      <mat-card
+        *ngIf="
+          !env[browser.id]?.error &&
+          env[browser.id].info &&
+          env[browser.id].info.total == 0
+        "
+      >
+        <mat-card-header>
+          <mat-card-title> No Tests </mat-card-title>
         </mat-card-header>
         <mat-card-content>
           Please add some tests to see the results
         </mat-card-content>
       </mat-card>
-      <mat-card *ngIf="env[browser.id].info && env[browser.id].info.total != 0 && logs[browser.id].length > 0">
+      <mat-card
+        *ngIf="
+          !env[browser.id]?.error &&
+          env[browser.id].info &&
+          env[browser.id].info.total != 0 &&
+          logs[browser.id].length > 0
+        "
+      >
         <mat-card-header>
-          <mat-card-title>
-            Logs
-          </mat-card-title>
+          <mat-card-title> Logs </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <div class="red-color log-wrapper" *ngFor="let log of logs[browser.id]">
-            [{{ log.fullName }}]:   
+          <div
+            class="red-color log-wrapper"
+            *ngFor="let log of logs[browser.id]"
+          >
+            [{{ log.fullName }}]:
             <pre>{{ log.log }}</pre>
           </div>
         </mat-card-content>
       </mat-card>
-      <app-suite-info *ngIf="env[browser.id].info" [suiteInfo]="env[browser.id].info.specs"></app-suite-info>
+      <app-suite-info
+        *ngIf="!env[browser.id]?.error && env[browser.id].info"
+        [suiteInfo]="env[browser.id].info.specs"
+      ></app-suite-info>
     </mat-tab>
   </mat-tab-group>
 </div>
-

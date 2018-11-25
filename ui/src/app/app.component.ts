@@ -11,6 +11,7 @@ import { browserImages } from './constants';
 export class AppComponent implements OnInit, OnDestroy {
   private initSubscription: Subscription;
   private specResultSubscription: Subscription;
+  private browserErrorSubscription: Subscription;
   private env: any;
   private browsers;
   private logs = {};
@@ -30,6 +31,12 @@ export class AppComponent implements OnInit, OnDestroy {
       .onMessage('specResult')
       .subscribe((env) => {
         this.updateUI(env);
+      });
+
+    this.browserErrorSubscription = this.socketService
+      .onMessage('browserError')
+      .subscribe((info) => {
+        this.env[info.id].error = info.error;
       });
   }
 
@@ -97,5 +104,6 @@ export class AppComponent implements OnInit, OnDestroy {
     // Required to avoid memory leaks
     this.initSubscription.unsubscribe();
     this.specResultSubscription.unsubscribe();
+    this.browserErrorSubscription.unsubscribe();
   }
 }

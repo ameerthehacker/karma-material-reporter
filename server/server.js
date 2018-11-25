@@ -69,7 +69,8 @@ module.exports = (karmaLog) => {
   };
 
   const onBrowserRegisterFn = (browser) => {
-    env[browser.id] = { browser, logs: {} };
+    env[browser.id] = { browser, logs: {}, error: undefined };
+    io.emit('browserError', { id: browser.id, error: undefined });
   };
 
   const onRunStartFn = (browsersCollection) => {};
@@ -82,7 +83,10 @@ module.exports = (karmaLog) => {
 
   const onBrowserCompleteFn = (browser) => {};
 
-  const onBrowserErrorFn = (browser, error) => {};
+  const onBrowserErrorFn = (browser, error) => {
+    io.emit('browserError', { id: browser.id, error });
+    env[browser.id].error = error;
+  };
 
   const onBrowserLogFn = (browser, log, type) => {};
 
