@@ -24,6 +24,7 @@
             'green-color': env[browser.id].summary.failed === 0,
             'red-color': env[browser.id].summary.failed !== 0
           }"
+          class="spec-info"
           ><pre>
 Ran {{ env[browser.id].summary.total || 0 }} {{
               env[browser.id].summary.total != 1 ? 'specs' : 'spec'
@@ -37,12 +38,13 @@ Ran {{ env[browser.id].summary.total || 0 }} {{
             'green-color': env[browser.id].summary.failed === 0,
             'red-color': env[browser.id].summary.failed !== 0
           }"
+          class="time-info"
         >
           <pre>
 finished in {{ env[browser.id].summary.totalTime / 1000 || 0 }}s</pre>
         </span>
       </mat-toolbar>
-      <mat-card *ngIf="env[browser.id]?.error">
+      <mat-card class="browser-error" *ngIf="env[browser.id]?.error">
         <mat-card-header>
           <mat-card-title> Browser Error </mat-card-title>
         </mat-card-header>
@@ -53,6 +55,7 @@ finished in {{ env[browser.id].summary.totalTime / 1000 || 0 }}s</pre>
         </mat-card-content>
       </mat-card>
       <mat-card
+        class="no-tests"
         *ngIf="
           !env[browser.id]?.error &&
           env[browser.id].info &&
@@ -67,6 +70,7 @@ finished in {{ env[browser.id].summary.totalTime / 1000 || 0 }}s</pre>
         </mat-card-content>
       </mat-card>
       <mat-card
+        class="logs"
         *ngIf="
           !env[browser.id]?.error &&
           env[browser.id].info &&
