@@ -14,7 +14,7 @@ import {
 export class SuiteInfoComponent implements OnInit, OnChanges {
   @Input()
   public suiteInfo: Object;
-  public suites: Array<Object>;
+  public suites: Array<any>;
 
   constructor() {}
 

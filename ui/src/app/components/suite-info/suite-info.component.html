@@ -46,7 +46,7 @@
         &nbsp; {{ isPending(test) ? test : test.description }} &nbsp;
         <span
           *ngIf="suiteInfo[suite].$ && suiteInfo[suite].$.time != undefined"
-          class="contrast-color"
+          class="spec-time contrast-color spec-"
           >{{ test.time / 1000 }}s</span
         >
       </mat-list-item>

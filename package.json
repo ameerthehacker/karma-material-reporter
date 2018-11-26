@@ -7,11 +7,11 @@
     "test": "ng test",
     "dev": "karma start dev/karma.conf.js",
     "build:watch": "ng build --watch",
-    "lint": "ng lint --fix",
+    "lint": "ng lint karma-awesome-reporter-ui --fix && :",
     "pretty": "prettier --write"
   },
   "lint-staged": {
-    "*.{ts}": [
+    "*.{spec,ts}": [
       "npm run lint",
       "git add"
     ],
