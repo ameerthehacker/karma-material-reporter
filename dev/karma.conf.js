@@ -16,7 +16,7 @@ module.exports = function(config) {
     },
     exclude: ['**/*.swp'],
     preprocessors: {},
-    reporters: ['progress', 'awesome'],
+    reporters: ['progress', 'material'],
     port: 9876,
     colors: true,
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
