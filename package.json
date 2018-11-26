@@ -4,18 +4,20 @@
   "description": "A good looking UI for displaying karma test results",
   "main": "index.js",
   "scripts": {
-    "test": "ng test",
+    "test": "ng test --watch=false",
+    "test:watch": "ng test --watch=true",
     "dev": "karma start dev/karma.conf.js",
     "build:watch": "ng build --watch",
     "lint": "ng lint karma-awesome-reporter-ui --fix && :",
-    "pretty": "prettier --write"
+    "pretty": "prettier --write",
+    "coverage": "ng test --code-coverage"
   },
   "lint-staged": {
     "*.{spec,ts}": [
       "npm run lint",
       "git add"
     ],
-    "*.{js,ts,html,json,scss,md}": [
+    "*.{js,ts,html,json,scss,md,yml}": [
       "npm run pretty",
       "git add"
     ]
@@ -47,31 +49,28 @@
     "socket.io": "^2.1.1"
   },
   "devDependencies": {
-    "core-js": "^2.5.4",
-    "rxjs": "^6.0.0",
-    "socket.io-client": "^2.1.1",
-    "zone.js": "^0.8.26",
-    "material-icons": "^0.2.3",
+    "@angular-devkit/build-angular": "~0.10.6",
     "@angular/animations": "^7.0.4",
     "@angular/cdk": "^7.0.4",
+    "@angular/cli": "~7.0.6",
     "@angular/common": "^7.0.4",
     "@angular/compiler": "^7.0.4",
+    "@angular/compiler-cli": "^7.0.4",
     "@angular/core": "^7.0.4",
     "@angular/flex-layout": "^7.0.0-beta.19",
     "@angular/forms": "^7.0.4",
     "@angular/http": "^7.0.4",
+    "@angular/language-service": "^7.0.4",
     "@angular/material": "^7.0.4",
     "@angular/platform-browser": "^7.0.4",
     "@angular/platform-browser-dynamic": "^7.0.4",
     "@angular/router": "^7.0.4",
-    "@angular-devkit/build-angular": "~0.10.6",
-    "@angular/cli": "~7.0.6",
-    "@angular/compiler-cli": "^7.0.4",
-    "@angular/language-service": "^7.0.4",
     "@types/jasmine": "~3.0.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~10.12.9",
+    "codecov": "^3.1.0",
     "codelyzer": "~4.5.0",
+    "core-js": "^2.5.4",
     "husky": "^1.1.4",
     "jasmine": "^3.3.0",
     "jasmine-core": "~3.3.0",
@@ -83,10 +82,14 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "lint-staged": "^8.0.5",
+    "material-icons": "^0.2.3",
     "prettier": "^1.15.2",
     "protractor": "~5.4.1",
+    "rxjs": "^6.0.0",
+    "socket.io-client": "^2.1.1",
     "ts-node": "~7.0.1",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.6"
+    "typescript": "~3.1.6",
+    "zone.js": "^0.8.26"
   }
 }
