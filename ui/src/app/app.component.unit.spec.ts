@@ -54,7 +54,7 @@ describe('AppComponent', () => {
       '1': {
         browser: {
           id: '1',
-          name: 'FireFox'
+          name: 'Firefox'
         },
         logs: {}
       }
@@ -72,7 +72,7 @@ describe('AppComponent', () => {
         },
         {
           id: '1',
-          name: 'FireFox'
+          name: 'Firefox'
         }
       ]);
     });
