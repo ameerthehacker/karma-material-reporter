@@ -13,8 +13,8 @@ import {
 })
 export class SuiteInfoComponent implements OnInit, OnChanges {
   @Input()
-  suiteInfo: Object;
-  suites: Array<Object>;
+  public suiteInfo: Object;
+  public suites: Array<Object>;
 
   constructor() {}
 
@@ -22,7 +22,7 @@ export class SuiteInfoComponent implements OnInit, OnChanges {
     this.init();
   }
 
-  private init() {
+  public init() {
     this.suites = Object.keys(this.suiteInfo).filter(
       (e) => e !== '_' && e !== '$'
     );
@@ -30,7 +30,7 @@ export class SuiteInfoComponent implements OnInit, OnChanges {
 
   public hasMoreSuites(suite) {
     // If _ is present then more than 1 keys is required otherwise just one key is fine
-    const requiresKeysCount = suite._ ? 1 : 0 + suite.$ ? 1 : 0;
+    const requiresKeysCount = (suite._ ? 1 : 0) + (suite.$ ? 1 : 0);
 
     if (Object.keys(suite).length > requiresKeysCount) {
       return true;
