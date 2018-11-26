@@ -1,8 +1,14 @@
 version: 2
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test
+
 jobs:
   test:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node:8.9-browsers
 
     working_directory: ~/repo
 
@@ -13,6 +19,10 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
+
+      - run:
+          name: Rebuild node sass
+          command: npm rebuild node-sass
 
       - run:
           name: Install dependencies
@@ -26,18 +36,13 @@ jobs:
       # run tests!
       - run:
           name: Run tests
-          command: npm run test
+          command: NODE_ENV=CI npm run test
 
       # run code coverage
       - run:
           name: Code coverage report
-          command: npm run coverage
+          command: NODE_ENV=CI npm run coverage
 
       - run:
           name: Upload code coverage report
           command: ./node_modules/codecov/bin/codecov
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - test

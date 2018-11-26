@@ -10,7 +10,7 @@
     "build:watch": "ng build --watch",
     "lint": "ng lint karma-awesome-reporter-ui --fix && :",
     "pretty": "prettier --write",
-    "coverage": "ng test --code-coverage"
+    "coverage": "ng test --code-coverage --watch=false"
   },
   "lint-staged": {
     "*.{spec,ts}": [
@@ -81,6 +81,7 @@
     "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "karma-mocha-reporter": "^2.2.5",
     "lint-staged": "^8.0.5",
     "material-icons": "^0.2.3",
     "prettier": "^1.15.2",
