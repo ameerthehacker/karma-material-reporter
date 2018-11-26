@@ -1,4 +1,4 @@
-# Karma Awesome Reporter
+# Karma Material Reporter
 
 [![CircleCI](https://circleci.com/gh/ameerthehacker/karma-awesome-reporter.svg?style=svg)](https://circleci.com/gh/ameerthehacker/karma-awesome-reporter)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)

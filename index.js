@@ -1,4 +1,4 @@
-const AwesomeReporter = function(config, logger) {
+const MaterialReporter = function(config, logger) {
   const log = logger.create('karma.awesome.reporter');
   const opn = require('opn');
   const {
@@ -44,8 +44,8 @@ const AwesomeReporter = function(config, logger) {
   this.onRunStart = onRunStartFn;
 };
 
-AwesomeReporter.$inject = ['config', 'logger'];
+MaterialReporter.$inject = ['config', 'logger'];
 
 module.exports = {
-  'reporter:awesome': ['type', AwesomeReporter]
+  'reporter:material': ['type', MaterialReporter]
 };

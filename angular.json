@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "karma-awesome-reporter-ui": {
+    "karma-material-reporter-ui": {
       "root": "",
       "sourceRoot": "ui",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/karma-awesome-reporter-ui",
+            "outputPath": "ui-dist/karma-material-reporter-ui",
             "index": "ui/src/index.html",
             "main": "ui/src/main.ts",
             "polyfills": "ui/src/polyfills.ts",
@@ -45,18 +45,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "karma-awesome-reporter-ui:build"
+            "browserTarget": "karma-material-reporter-ui:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "karma-awesome-reporter-ui:build:production"
+              "browserTarget": "karma-material-reporter-ui:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "karma-awesome-reporter-ui:build"
+            "browserTarget": "karma-material-reporter-ui:build"
           }
         },
         "test": {
@@ -83,7 +83,7 @@
         }
       }
     },
-    "karma-awesome-reporter-ui-e2e": {
+    "karma-material-reporter-ui-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -91,7 +91,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "karma-awesome-reporter-ui:serve"
+            "devServerTarget": "karma-material-reporter-ui:serve"
           }
         },
         "lint": {
@@ -104,5 +104,5 @@
       }
     }
   },
-  "defaultProject": "karma-awesome-reporter-ui"
+  "defaultProject": "karma-material-reporter-ui"
 }

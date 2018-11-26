@@ -5,9 +5,10 @@ module.exports = (karmaLog) => {
   const angularConfig = require('../angular.json');
   const http = require('http');
   const favicon = require('serve-favicon');
+  let rootDir = path.dirname(__dirname);
 
   const outDir =
-    angularConfig.projects['karma-awesome-reporter-ui'].architect.build.options
+    angularConfig.projects['karma-material-reporter-ui'].architect.build.options
       .outputPath;
   let env = {};
   const server = http.createServer(app);
@@ -17,7 +18,7 @@ module.exports = (karmaLog) => {
     socket.emit('init', env);
   });
 
-  const distDir = path.join(process.cwd(), outDir);
+  const distDir = path.join(rootDir, outDir);
 
   // Set karma as favicon
   app.use(
