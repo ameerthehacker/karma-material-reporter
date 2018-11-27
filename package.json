@@ -1,6 +1,6 @@
 {
   "name": "karma-material-reporter",
-  "version": "0.0.1",
+  "version": "0.0.0-semantic-release",
   "description": "A good looking UI for displaying karma test results",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "lint": "ng lint karma-material-reporter-ui --fix && :",
     "pretty": "prettier --write",
     "coverage": "ng test --code-coverage --watch=false",
-    "build-reporter": "node build/build.js"
+    "build-reporter": "node build/build.js",
+    "semantic-release": "semantic-release"
   },
   "lint-staged": {
     "*.{spec,ts}": [
@@ -31,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ameerthehacker/karma-material-reporter.git"
+    "url": "https://github.com/ameerthehacker/karma-material-reporter.git"
   },
   "keywords": [
     "karma",
@@ -67,6 +68,8 @@
     "@angular/platform-browser": "^7.0.4",
     "@angular/platform-browser-dynamic": "^7.0.4",
     "@angular/router": "^7.0.4",
+    "@semantic-release/commit-analyzer": "^6.1.0",
+    "@semantic-release/npm": "^5.1.1",
     "@types/jasmine": "~3.0.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~10.12.9",
@@ -91,6 +94,7 @@
     "protractor": "~5.4.1",
     "rimraf": "^2.6.2",
     "rxjs": "^6.0.0",
+    "semantic-release": "^15.12.2",
     "socket.io-client": "^2.1.1",
     "ts-node": "~7.0.1",
     "tslint": "~5.11.0",

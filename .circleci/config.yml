@@ -4,7 +4,13 @@ workflows:
   build_and_test:
     jobs:
       - test
-
+      - release:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - release
 jobs:
   test:
     docker:
@@ -46,3 +52,30 @@ jobs:
       - run:
           name: Upload code coverage report
           command: ./node_modules/codecov/bin/codecov
+  release:
+    docker:
+      - image: 'circleci/node:8.9'
+    steps:
+      - checkout
+
+      - run:
+          name: Rebuild node sass
+          command: npm rebuild node-sass
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - run:
+          name: Build UI
+          command: npm run build-ui:prod
+
+      - run:
+          name: Build Reporter
+          command: npm run build-reporter
+
+      - run:
+          name: Publish Package
+          command: npm run semantic-release || true
+          require:
+            - test
