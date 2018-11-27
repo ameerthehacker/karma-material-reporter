@@ -33,7 +33,7 @@
 
 ![Log Error](https://i.imgur.com/ARGp65l.png)
 
-- :tada: No more browser reload whenever you tweak a test
+:tada: No more browser reload whenever you tweak a test
 
 ![Async Test](https://i.imgur.com/AE42Wix.png)
 
@@ -135,7 +135,7 @@ npm run build-ui:watch
 npm run dev
 ```
 
-:heavy_exclamation_mark: If you have any ideas are suggestion please feel free to create an issue before jumping into development
+:heavy_exclamation_mark: If you have any ideas or suggestions please feel free to create an issue before jumping into development
 
 Show your support by :star: the repo
 
