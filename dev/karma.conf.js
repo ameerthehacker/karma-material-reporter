@@ -9,8 +9,8 @@ module.exports = function(config) {
       require('karma-chrome-launcher'),
       require('karma-firefox-launcher')
     ],
-    // configurations available for awesome reporter
-    awesomeReporter: {
+    // configurations available for material reporter
+    materialReporter: {
       serverPort: 3000,
       autoOpen: true
     },

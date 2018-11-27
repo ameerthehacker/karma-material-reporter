@@ -7,8 +7,8 @@
   <a href="https://github.com/prettier/prettier">
     <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=shield" alt="code style: prettier">
   </a>
-  <a href="https://gitter.im/Karma-awesome-reporter/Lobby">
-    <img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/Karma-awesome-reporter/Lobby">
+  <a href="https://gitter.im/Karma-material-reporter/Lobby">
+    <img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/Karma-material-reporter/Lobby">
   </a>
   <a href="https://codecov.io/gh/ameerthehacker/karma-material-reporter">
     <img src="https://codecov.io/gh/ameerthehacker/karma-material-reporter/branch/master/graph/badge.svg" alt="codecov">
@@ -84,7 +84,7 @@ module.exports = function(config) {
      ...
      require('karma-material-repoter')
    ],
-   awesomeReporter: {
+   materialReporter: {
      serverPort: 3000,
      autoOpen: true
    },

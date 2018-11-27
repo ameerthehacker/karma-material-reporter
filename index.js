@@ -1,5 +1,5 @@
 const MaterialReporter = function(config, logger) {
-  const log = logger.create('karma.awesome.reporter');
+  const log = logger.create('karma.material.reporter');
   const opn = require('opn');
   const {
     server,
@@ -14,21 +14,21 @@ const MaterialReporter = function(config, logger) {
     onRunCompleteFn,
     onRunStartFn
   } = require('./server/server')(log);
-  const reporterConfig = config.awesomeReporter || {};
+  const reporterConfig = config.materialReporter || {};
   // Default settings
   reporterConfig.serverPort = reporterConfig.serverPort || 3000;
 
-  log.info('Starting awesome reporter server');
+  log.info('Starting material reporter server');
   const instance = server
     .listen(reporterConfig.serverPort, () => {
-      log.info('Awesome reporter server started');
+      log.info('Material reporter server started');
 
       if (reporterConfig.autoOpen !== false) {
         opn('http://localhost:3000');
       }
     })
     .on('error', (err) => {
-      log.error(`Unable to start awesome reporter server: ${err}`);
+      log.error(`Unable to start material reporter server: ${err}`);
     });
 
   // Link all the hooks to the express server
