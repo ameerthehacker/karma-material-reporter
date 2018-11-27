@@ -45,9 +45,7 @@
   },
   "homepage": "https://github.com/ameerthehacker/karma-material-reporter#readme",
   "dependencies": {
-    "app-root-dir": "^1.0.2",
     "express": "^4.16.4",
-    "find-root": "^1.1.0",
     "opn": "^5.4.0",
     "serve-favicon": "^2.5.0",
     "socket.io": "^2.1.1"
