@@ -1,11 +1,23 @@
-# Karma Material Reporter
+<h1 align="center">Karma Material Reporter</h1>
 
-[![CircleCI](https://circleci.com/gh/ameerthehacker/karma-material-reporter.svg?style=shield)](https://circleci.com/gh/ameerthehacker/karma-material-reporter)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=shield)](https://github.com/prettier/prettier)
-[![Join the chat at https://gitter.im/Karma-awesome-reporter/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Karma-awesome-reporter/Lobby)
-[![codecov](https://codecov.io/gh/ameerthehacker/karma-material-reporter/branch/master/graph/badge.svg)](https://codecov.io/gh/ameerthehacker/karma-material-reporter)
-
-Visualize karma test results in real time with material designed reporter :hearts:
+<p align="center">
+  <a href="https://circleci.com/gh/ameerthehacker/karma-material-reporter">
+    <img src="https://circleci.com/gh/ameerthehacker/karma-material-reporter.svg?style=shield" alt="CircleCI">
+  </a>
+  <a href="https://github.com/prettier/prettier">
+    <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=shield" alt="code style: prettier">
+  </a>
+  <a href="https://gitter.im/Karma-awesome-reporter/Lobby">
+    <img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/Karma-awesome-reporter/Lobby">
+  </a>
+  <a href="https://codecov.io/gh/ameerthehacker/karma-material-reporter">
+    <img src="https://codecov.io/gh/ameerthehacker/karma-material-reporter/branch/master/graph/badge.svg" alt="codecov">
+  </a>
+  <a href="https://github.com/semantic-release/semantic-release">
+    <img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release">
+  </a>
+</p>
+<p align="center">Visualize karma test results in real time with material designed reporter :hearts:</p>
 
 ![Karma Material Reporter](https://i.imgur.com/76MVpsm.png)
 
