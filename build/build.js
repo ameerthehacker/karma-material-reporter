@@ -8,17 +8,16 @@ const rootPath = process.cwd();
 const distDir = path.join(rootPath, 'dist');
 
 const uiOutDir =
-    angularConfig.projects['karma-material-reporter-ui'].architect.build.options
-      .outputPath;
+  angularConfig.projects['karma-material-reporter-ui'].architect.build.options
+    .outputPath;
 
-if(fs.existsSync(distDir)) {
+if (fs.existsSync(distDir)) {
   console.log('Removing dist directory...');
   rm(distDir, () => {
     console.log('Removed dist directory...');
     build();
   });
-}
-else {
+} else {
   build();
 }
 
@@ -27,7 +26,7 @@ function build() {
     const uiOutDirBasename = uiOutDir.split(path.sep)[0];
 
     fs.mkdirSync(distDir);
-    
+
     if (!fs.existsSync(path.join(distDir, 'server'))) {
       fs.mkdirSync(path.join(distDir, 'server'));
     }
@@ -36,13 +35,30 @@ function build() {
     }
 
     console.log('Copying package.json...');
-    fs.copyFileSync(path.join(rootPath, 'package.json'), path.join(distDir, 'package.json'));
+    fs.copyFileSync(
+      path.join(rootPath, 'package.json'),
+      path.join(distDir, 'package.json')
+    );
     console.log('Copying angular.json...');
-    fs.copyFileSync(path.join(rootPath, 'angular.json'), path.join(distDir, 'angular.json'));
+    fs.copyFileSync(
+      path.join(rootPath, 'angular.json'),
+      path.join(distDir, 'angular.json')
+    );
     console.log('Copying server file');
-    fs.copyFileSync(path.join(rootPath, 'server', 'server.js'), path.join(distDir, 'server', 'server.js'));
+    fs.copyFileSync(
+      path.join(rootPath, 'server', 'server.js'),
+      path.join(distDir, 'server', 'server.js')
+    );
     console.log('Copying index file');
-    fs.copyFileSync(path.join(rootPath, 'index.js'), path.join(distDir, 'index.js'));
+    fs.copyFileSync(
+      path.join(rootPath, 'index.js'),
+      path.join(distDir, 'index.js')
+    );
+    console.log('Copying README.md');
+    fs.copyFileSync(
+      path.join(rootPath, 'README.md'),
+      path.join(distDir, 'README.md')
+    );
     console.log('Copying UI dist files');
     ncp(uiOutDir, path.join(distDir, uiOutDir), (err) => {
       if (!err) {
@@ -51,9 +67,7 @@ function build() {
         console.log(`Error copying UI dist files: ${err}`);
       }
     });
-  }
-  catch(err) {
+  } catch (err) {
     console.log(`Error building dist files: ${err}`);
   }
 }
-
