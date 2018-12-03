@@ -21,10 +21,12 @@ const MaterialReporter = function(config, logger) {
   log.info('Starting material reporter server');
   const instance = server
     .listen(reporterConfig.serverPort, () => {
-      log.info('Material reporter server started');
+      log.info(
+        `Material reporter server started at port ${reporterConfig.serverPort}`
+      );
 
       if (reporterConfig.autoOpen !== false) {
-        opn('http://localhost:3000');
+        opn(`http://localhost:${reporterConfig.serverPort}`);
       }
     })
     .on('error', (err) => {
