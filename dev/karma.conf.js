@@ -12,6 +12,7 @@ module.exports = function(config) {
     // configurations available for material reporter
     materialReporter: {
       serverPort: 3000,
+      expandSuites: true,
       autoOpen: true
     },
     exclude: ['**/*.swp'],

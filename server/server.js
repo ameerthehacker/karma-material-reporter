@@ -1,4 +1,4 @@
-module.exports = (karmaLog) => {
+module.exports = (karmaLog, reporterConfig) => {
   const express = require('express');
   const app = express();
   const path = require('path');
@@ -11,11 +11,13 @@ module.exports = (karmaLog) => {
     angularConfig.projects['karma-material-reporter-ui'].architect.build.options
       .outputPath;
   let env = {};
+  let settings = reporterConfig;
   const server = http.createServer(app);
   const io = require('socket.io')(server);
 
   io.on('connection', (socket) => {
     socket.emit('init', env);
+    socket.emit('settings', reporterConfig);
   });
 
   const distDir = path.join(rootDir, outDir);

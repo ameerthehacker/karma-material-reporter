@@ -13,10 +13,12 @@ export class AppComponent implements OnInit, OnDestroy {
   public specResultSubscription: Subscription;
   public browserErrorSubscription: Subscription;
   public summarySubscription: Subscription;
+  public settingsSubscription: Subscription;
   public env: any;
   public browsers;
   public logs = {};
   public noTests = false;
+  public settings: any;
 
   constructor(private socketService: SocketService) {}
 
@@ -46,6 +48,13 @@ export class AppComponent implements OnInit, OnDestroy {
       .onMessage('summary')
       .subscribe((summary) => {
         this.env[summary.id].summary = summary.summary;
+      });
+
+    this.summarySubscription = this.socketService
+      .onMessage('settings')
+      .subscribe((settings) => {
+        this.settings = settings;
+        console.log(this.settings);
       });
   }
 
@@ -114,6 +123,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.initSubscription.unsubscribe();
     this.specResultSubscription.unsubscribe();
     this.browserErrorSubscription.unsubscribe();
+    this.summarySubscription.unsubscribe();
     this.summarySubscription.unsubscribe();
   }
 }
