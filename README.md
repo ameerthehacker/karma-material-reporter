@@ -69,10 +69,11 @@ Voila! power up your tests with karma and you should see the reporter opeing up 
 
 ## Availble Configurations
 
-| Option     |                             Description                              | Default |
-| ---------- | :------------------------------------------------------------------: | ------: |
-| serverPort |         port in which the reporter startes a express server          |    3000 |
-| autoOpen   | whether to open the reporter UI automatically in the default browser |    true |
+|    Option    |                             Description                              | Default |
+| :----------: | :------------------------------------------------------------------: | :-----: |
+|  serverPort  |         port in which the reporter startes a express server          |  3000   |
+|   autoOpen   | whether to open the reporter UI automatically in the default browser |  true   |
+| expandSuites |                expand all the expandable suite menus                 |  true   |
 
 You can change the above options by updating **karma.conf.js** as showm below
 
@@ -86,7 +87,8 @@ module.exports = function(config) {
    ],
    materialReporter: {
      serverPort: 3000,
-     autoOpen: true
+     autoOpen: true,
+     expandSuites: true
    },
    ...
    reporters: ['progress', 'material'],
