@@ -1,4 +1,4 @@
-module.exports = (karmaLog) => {
+module.exports = (karmaLog, reporterConfig) => {
   const express = require('express');
   const app = express();
   const path = require('path');
@@ -11,11 +11,13 @@ module.exports = (karmaLog) => {
     angularConfig.projects['karma-material-reporter-ui'].architect.build.options
       .outputPath;
   let env = {};
+  let settings = reporterConfig;
   const server = http.createServer(app);
   const io = require('socket.io')(server);
 
   io.on('connection', (socket) => {
     socket.emit('init', env);
+    socket.emit('settings', reporterConfig);
   });
 
   const distDir = path.join(rootDir, outDir);
@@ -34,7 +36,14 @@ module.exports = (karmaLog) => {
   });
 
   const onSpecCompleteFn = (browser, specResult) => {
+    if (!env[browser.id].info.specs[specResult.suite[0]]) {
+      env[browser.id].info.specs[specResult.suite[0]] = {
+        _: []
+      };
+    }
+
     let suite = env[browser.id].info.specs[specResult.suite[0]];
+
     env[browser.id].logs[specResult.id] = {
       fullName: specResult.fullName,
       log: specResult.log
@@ -47,7 +56,14 @@ module.exports = (karmaLog) => {
     );
 
     for (let i = 1; i < specResult.suite.length; i++) {
+      if (!suite[specResult.suite[i]]) {
+        suite[specResult.suite[i]] = {
+          _: []
+        };
+      }
+
       suite = suite[specResult.suite[i]];
+
       updateSuiteStatus(
         suite,
         specResult.success ? 'success' : 'fail',
@@ -56,7 +72,12 @@ module.exports = (karmaLog) => {
     }
 
     const index = suite._.indexOf(specResult.description);
-    suite._[index] = specResult;
+
+    if (index === -1) {
+      suite._.push(specResult);
+    } else {
+      suite._[index] = specResult;
+    }
 
     io.emit('specResult', env);
   };

@@ -1,5 +1,5 @@
 <mat-accordion multi="true">
-  <mat-expansion-panel *ngFor="let suite of suites">
+  <mat-expansion-panel [expanded]="expandSuites" *ngFor="let suite of suites">
     <mat-expansion-panel-header>
       <mat-panel-title>
         <mat-icon
@@ -26,6 +26,7 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <app-suite-info
+      [expandSuites]="expandSuites"
       *ngIf="hasMoreSuites(suiteInfo[suite])"
       [suiteInfo]="suiteInfo[suite]"
     ></app-suite-info>

@@ -1,7 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
-
 import { SocketService } from './socket.service';
-import { SocketClientService } from './socket.client.service';
 
 import { environment } from '../../environments/environment';
 
@@ -17,14 +14,12 @@ describe('SocketService', () => {
   });
 
   describe('init()', () => {
-    it('should call io() with server url', () => {
+    it('should call io() with /', () => {
       spyOn(socketClientService, 'io');
 
       service.init();
 
-      expect(socketClientService.io).toHaveBeenCalledWith(
-        environment.serverUrl
-      );
+      expect(socketClientService.io).toHaveBeenCalledWith('/');
     });
   });
 

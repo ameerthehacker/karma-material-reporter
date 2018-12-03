@@ -1,6 +1,12 @@
 const MaterialReporter = function(config, logger) {
   const log = logger.create('karma.material.reporter');
   const opn = require('opn');
+  const reporterConfig = config.materialReporter || {};
+  // Default settings
+  reporterConfig.serverPort = reporterConfig.serverPort || 3000;
+  if (reporterConfig.expandSuites === undefined) {
+    reporterConfig.expandSuites = true;
+  }
   const {
     server,
     onSpecCompleteFn,
@@ -13,18 +19,17 @@ const MaterialReporter = function(config, logger) {
     onExitFn,
     onRunCompleteFn,
     onRunStartFn
-  } = require('./server/server')(log);
-  const reporterConfig = config.materialReporter || {};
-  // Default settings
-  reporterConfig.serverPort = reporterConfig.serverPort || 3000;
+  } = require('./server/server')(log, reporterConfig);
 
   log.info('Starting material reporter server');
   const instance = server
     .listen(reporterConfig.serverPort, () => {
-      log.info('Material reporter server started');
+      log.info(
+        `Material reporter server started at port ${reporterConfig.serverPort}`
+      );
 
       if (reporterConfig.autoOpen !== false) {
-        opn('http://localhost:3000');
+        opn(`http://localhost:${reporterConfig.serverPort}`);
       }
     })
     .on('error', (err) => {

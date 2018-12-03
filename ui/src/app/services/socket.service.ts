@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
 import { SocketClientService } from './socket.client.service';
@@ -13,7 +12,7 @@ export class SocketService {
   constructor(private socketClientService: SocketClientService) {}
 
   public init() {
-    this.socket = this.socketClientService.io(environment.serverUrl);
+    this.socket = this.socketClientService.io('/');
   }
 
   public send(key: string, value: any) {

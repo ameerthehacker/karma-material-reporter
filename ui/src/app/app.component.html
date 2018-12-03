@@ -92,6 +92,7 @@ finished in {{ env[browser.id].summary.totalTime / 1000 || 0 }}s</pre>
         </mat-card-content>
       </mat-card>
       <app-suite-info
+        [expandSuites]="settings.expandSuites"
         *ngIf="!env[browser.id]?.error && env[browser.id].info"
         [suiteInfo]="env[browser.id].info.specs"
       ></app-suite-info>

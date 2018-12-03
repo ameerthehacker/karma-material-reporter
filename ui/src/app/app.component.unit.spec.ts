@@ -15,6 +15,7 @@ describe('AppComponent', () => {
   let specResultSubject: Subject<any>;
   let browserErrorSubject: Subject<any>;
   let summarySubject: Subject<any>;
+  let settingsSubject: Subject<any>;
 
   beforeEach(() => {
     socketService = new SocketService(new SocketClientServiceMock());
@@ -22,6 +23,7 @@ describe('AppComponent', () => {
     specResultSubject = new Subject();
     browserErrorSubject = new Subject();
     summarySubject = new Subject();
+    settingsSubject = new Subject();
 
     spyOn(socketService, 'init').and.returnValue({});
     spyOn(socketService, 'onMessage').and.callFake((key) => {
@@ -34,6 +36,8 @@ describe('AppComponent', () => {
           return browserErrorSubject;
         case 'summary':
           return summarySubject;
+        case 'settings':
+          return settingsSubject;
       }
     });
     appComponent = new AppComponent(socketService);
@@ -165,12 +169,25 @@ describe('AppComponent', () => {
       expect(appComponent.env[1].summary).toEqual(summary.summary);
     });
 
+    it('message `settings` should update settings', () => {
+      appComponent.env = env;
+      appComponent.ngOnInit();
+      const settings = {
+        expandSuites: false
+      };
+
+      settingsSubject.next(settings);
+
+      expect(appComponent.settings).toEqual(settings);
+    });
+
     it('should unsubscribe all the observables onDestroy()', () => {
       appComponent.ngOnInit();
       spyOn(appComponent.initSubscription, 'unsubscribe');
       spyOn(appComponent.specResultSubscription, 'unsubscribe');
       spyOn(appComponent.summarySubscription, 'unsubscribe');
       spyOn(appComponent.browserErrorSubscription, 'unsubscribe');
+      spyOn(appComponent.settingsSubscription, 'unsubscribe');
 
       appComponent.ngOnDestroy();
 
@@ -182,6 +199,7 @@ describe('AppComponent', () => {
       expect(
         appComponent.browserErrorSubscription.unsubscribe
       ).toHaveBeenCalled();
+      expect(appComponent.settingsSubscription.unsubscribe).toHaveBeenCalled();
     });
   });
 
