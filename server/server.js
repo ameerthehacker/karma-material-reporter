@@ -34,7 +34,14 @@ module.exports = (karmaLog) => {
   });
 
   const onSpecCompleteFn = (browser, specResult) => {
+    if (!env[browser.id].info.specs[specResult.suite[0]]) {
+      env[browser.id].info.specs[specResult.suite[0]] = {
+        _: []
+      };
+    }
+
     let suite = env[browser.id].info.specs[specResult.suite[0]];
+
     env[browser.id].logs[specResult.id] = {
       fullName: specResult.fullName,
       log: specResult.log
@@ -47,7 +54,14 @@ module.exports = (karmaLog) => {
     );
 
     for (let i = 1; i < specResult.suite.length; i++) {
+      if (!suite[specResult.suite[i]]) {
+        suite[specResult.suite[i]] = {
+          _: []
+        };
+      }
+
       suite = suite[specResult.suite[i]];
+
       updateSuiteStatus(
         suite,
         specResult.success ? 'success' : 'fail',
@@ -56,7 +70,12 @@ module.exports = (karmaLog) => {
     }
 
     const index = suite._.indexOf(specResult.description);
-    suite._[index] = specResult;
+
+    if (index === -1) {
+      suite._.push(specResult);
+    } else {
+      suite._[index] = specResult;
+    }
 
     io.emit('specResult', env);
   };
