@@ -37,6 +37,7 @@ describe('AppComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);
+    fixture.componentInstance.settings = {};
     env = {
       '0': {
         browser: {

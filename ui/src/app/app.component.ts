@@ -50,11 +50,10 @@ export class AppComponent implements OnInit, OnDestroy {
         this.env[summary.id].summary = summary.summary;
       });
 
-    this.summarySubscription = this.socketService
+    this.settingsSubscription = this.socketService
       .onMessage('settings')
       .subscribe((settings) => {
         this.settings = settings;
-        console.log(this.settings);
       });
   }
 
@@ -124,6 +123,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.specResultSubscription.unsubscribe();
     this.browserErrorSubscription.unsubscribe();
     this.summarySubscription.unsubscribe();
-    this.summarySubscription.unsubscribe();
+    this.settingsSubscription.unsubscribe();
   }
 }
