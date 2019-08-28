@@ -16,6 +16,9 @@
   <a href="https://github.com/semantic-release/semantic-release">
     <img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release">
   </a>
+  <a href="https://github.com/semantic-release/semantic-release">
+    <img src="https://api.codacy.com/project/badge/Grade/15a7dacc6c0947ee9bf6c378eb2e8c07" alt="codacy">
+  </a>
 </p>
 <p align="center">Visualize karma test results in real time with material designed reporter :hearts:</p>
 
