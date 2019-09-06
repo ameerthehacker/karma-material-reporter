@@ -20,7 +20,7 @@
     <img src="https://api.codacy.com/project/badge/Grade/15a7dacc6c0947ee9bf6c378eb2e8c07" alt="codacy">
   </a>
 </p>
-<p align="center">Visualize karma test results in real time with material designed reporter :hearts:</p>
+<p align="center">Visualize karma test results in real time with material designed reporter</p>
 
 ![Karma Material Reporter](https://i.imgur.com/76MVpsm.png)
 
