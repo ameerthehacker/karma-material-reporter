@@ -60,7 +60,7 @@ module.exports = function(config) {
    ...
    plugins: [
      ...
-     require('karma-material-repoter')
+     require('karma-material-reporter')
    ],
    ...
    reporters: ['progress', 'material'],
@@ -86,7 +86,7 @@ module.exports = function(config) {
    ...
    plugins: [
      ...
-     require('karma-material-repoter')
+     require('karma-material-reporter')
    ],
    materialReporter: {
      serverPort: 3000,
